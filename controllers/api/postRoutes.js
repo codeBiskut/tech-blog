@@ -1,22 +1,35 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    const allposts = await Post.findAll()
+    const allposts = await Post.findAll({
+      include: [User, Comment]
+    })
 
     res.status(200).json(allposts)
-  } catch (err){
+  } catch (err) {
+    res.status(400).json(err)
+  }
+})
+
+router.get('/:id', async (req, res) => {
+  try {
+    const singlePost = await Post.findByPk(req.params.id, {
+      include: [User, Comment]
+    })
+    res.status(200).json(singlePost)
+  } catch (err) {
     res.status(400).json(err)
   }
 })
 
 router.put('/:id', withAuth, async (req, res) => {
-  try{
-    const updatePost = await Post.update(req.body, { where: { id: req.params.id}})
+  try {
+    const updatePost = await Post.update(req.body, { where: { id: req.params.id } })
     res.status(200).json(updatePost)
-  } catch(err){
+  } catch (err) {
     res.status(400).json(err)
   }
 })
