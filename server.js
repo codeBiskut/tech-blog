@@ -4,6 +4,7 @@ const session = require('express-session')
 const routes = require('./controllers')
 const helpers = require('./utils/helpers')
 
+// grab sequelize
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3001;
 // handlebars + helpers
 const handlebars = exphbs.create({helpers});
 
+// express session and sequelize session
 const sess = {
     secret: 'very secret secret',
     cookie: {
@@ -28,11 +30,14 @@ const sess = {
     })
 };
 
+// use the defined session
 app.use(session(sess));
 
+// use handlebars for front-end
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+// standard server setup
 app.use(expres.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
