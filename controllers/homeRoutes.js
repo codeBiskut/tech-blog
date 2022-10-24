@@ -18,9 +18,9 @@ router.get('/', async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      posts, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      posts,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -37,20 +37,22 @@ router.get('/post/:id', async (req, res) => {
         },
       ],
     });
-
     const posts = postData.get({ plain: true });
 
-    if (postData.user_id != req.session.user.id){
-      return res.render('postComment', {
+    if (postData.user_id != req.session.user_id) {
+      res.render('postComment', {
         ...posts,
         logged_in: req.session.logged_in
       })
     }
-    res.render('postOwner', {
-      ...posts,
-      logged_in: req.session.logged_in
-    });
+    else {
+      res.render('postOwner', {
+        ...posts,
+        logged_in: req.session.logged_in
+      });
+    }
   } catch (err) {
+    console.log(err)
     res.status(500).json(err);
   }
 });

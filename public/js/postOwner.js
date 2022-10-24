@@ -1,26 +1,29 @@
-const newFormHandler = async (event) => {
+const postId = document.querySelector("#hiddenBlogId").value
+
+const editFormHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector('#comment-name').value.trim();
-    const description = document.querySelector('#comment-desc').value.trim();
-  
-    if (name && description) {
-      const response = await fetch(`/api/comment`, {
-        method: 'POST',
-        body: JSON.stringify({ name, description }),
+    const editPost = {
+      name:document.querySelector('#edit-name').value,
+      description:document.querySelector('#edit-desc').value
+    }
+
+    if (editPost) {
+      const response = await fetch(`/api/posts/${postId}`, {
+        method: 'PUT',
+        body: JSON.stringify(editPost),
         headers: {
           'Content-Type': 'application/json',
         },
       });
-  
       if (response.ok) {
-        document.location.replace('/profile');
+        location.reload();
       } else {
-        alert('Failed to create comment');
+        alert('Failed to create updated post');
       }
     }
   };
 
   document
-    .querySelector('.new-comment-form')
-    .addEventListener('submit', newFormHandler);
+    .querySelector('.edit-comment-form')
+    .addEventListener('submit', editFormHandler);

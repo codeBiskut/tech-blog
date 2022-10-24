@@ -1,14 +1,14 @@
 [
   {
-    "name": "React is way better than handlebars",
-    "description": "You just don't know it yet."
+    "name": "Other front-end options?",
+    "description": "I've tried Handlebars, but it just doesn't feel great."
   },
   {
-    "name": "Can he make a tech blog??",
-    "description": "Find out soon!!"
+    "name": "Bootcamp grad!",
+    "description": "I just finished the last assignment for my web design bootcamp!"
   },
   {
-    "name": "Social Network API",
-    "description": "I don't know how to do this but i believe in my ability."
+    "name": "Looking for job",
+    "description": "Are there any places out there that are hiring?"
   }
 ]
