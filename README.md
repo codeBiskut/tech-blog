@@ -1,66 +1,47 @@
-# tech-blog
-GIVEN a CMS-style blog site
 
-WHEN I visit the site for the first time
+  # Model View Controller (MVC) Tech Blog   
 
-THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
+  ## Description
+  ---
 
-WHEN I click on the homepage option
+  The goal of this project was to make a tech blog following the Model-View-Controller paradigm.  Handlebars was used as the templating language, with Sequelize handling the object-relational-mapping, and express-session handling authentication.   
 
-THEN I am taken to the homepage
+  [![tech-blog.png](https://i.postimg.cc/mkf54FcR/tech-blog.png)](https://postimg.cc/VrgRBvBH)
 
-WHEN I click on any other links in the navigation
+  ## Table of Contents
+  ---
 
-THEN I am prompted to either sign up or sign in
+  [Installation](#installation)   
+  [Usage](#usage)   
+  [Credits](#credits)   
+  [License](#license)   
+  [How to Contribute](#how-to-contribute)   
 
-WHEN I choose to sign up
+  ## Installation
+  ---
 
-THEN I am prompted to create a username and password
+  To install this project, you will need Node.js and MySQL2 installed on your computer. After installing them, clone the repository and insert your MySQL2 credentials in the '.env.EXAMPLE' file. After insertion, rename the file to '.env' and save. Type 'npm i' in the console to install all the required packages.   
 
-WHEN I click on the sign-up button
+  ## Usage
+  ---
 
-THEN my user credentials are saved and I am logged into the site
+  To run the project, first type 'mysql -u root -p' into your console, followed by 'source db/schema.sql' to load the schema for the project. Type 'quit' in the mysql console, then type 'npm run seed' to seed the database with the seed data. Finally, type 'npm start' to run the server. Navigate to localhost:3001 in your browser to see the page.   
 
-WHEN I revisit the site at a later time and choose to sign in
+  ## Credits
+  ---
 
-THEN I am prompted to enter my username and password
+  -Contributor's GitHub: [codeBiskut](github.com/codeBiskut)   
+  -Contributor's Email: <josh.rinehart.2k@gmail.com>   
 
-WHEN I am signed in to the site
+  ## License
+  ---
 
-THEN I see navigation links for the homepage, the dashboard, and the option to log out
+  
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)   
 
-WHEN I click on the homepage option in the navigation
+  ## How to Contribute
+  ---
 
-THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
+     
 
-WHEN I click on an existing blog post
-
-THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
-
-WHEN I enter a comment and click on the submit button while signed in
-
-THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
-
-WHEN I click on the dashboard option in the navigation
-
-THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
-
-WHEN I click on the button to add a new blog post
-
-THEN I am prompted to enter both a title and contents for my blog post
-
-WHEN I click on the button to create a new blog post
-
-THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
-
-WHEN I click on one of my existing posts in the dashboard
-
-THEN I am able to delete or update my post and taken back to an updated dashboard
-
-WHEN I click on the logout option in the navigation
-
-THEN I am signed out of the site
-
-WHEN I am idle on the site for more than a set time
-
-THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
+  [Contributor Covenant](https://www.contributor-covenant.org/)   
